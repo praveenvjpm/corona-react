@@ -33,7 +33,8 @@ class App extends React.Component {
       
 
     return <div>
-      
+      <table border="1">
+        <tr><th>State</th><th>Country</th><th>Location</th><th>Cases</th></tr>
       { m.map((item, i) => {
           console.log(item.state);
           return <tr className='item'>
@@ -49,7 +50,7 @@ class App extends React.Component {
 
 
 
-       
+</table>
     </div>;
   }
 
