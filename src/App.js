@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        corona:{
+          
+        }
+      },
+    };
+  }
+  componentDidMount() {
+    var cors = require('cors')
+    
+    fetch('http://localhost:8080/hello',{
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }
+    })
+      .then(response => response.json())
+      .then(data => this.setState({ data }));
+      console.log(this.state.data,{});
+  }
+
+  render(){
+   // const d = {this.state.data};
+      const m = Array.from(this.state.data);
+      
+
+    return <div>
+      
+      { m.map((item, i) => {
+          console.log(item.state);
+          return <tr className='item'>
+					<td>{item.state}</td>
+					<td>{item.country}</td>
+					<td>{item.corordinates}</td>
+          <td>{item.number}</td>
+          </tr>
+        })
+      }
+
+
+
+
+
+       
+    </div>;
+  }
+
 }
 
 export default App;
