@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Table from 'react-bootstrap/Table';
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
 
 class App extends React.Component {
 
@@ -33,7 +36,15 @@ class App extends React.Component {
       
 
     return <div>
-      <table border="1">
+    <Breadcrumb>
+  <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+  <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+    Library
+  </Breadcrumb.Item>
+  <Breadcrumb.Item active>Data</Breadcrumb.Item>
+</Breadcrumb>
+    <div>
+      <Table striped bordered hover size="sm" variant="dark">
         <tr><th>State</th><th>Country</th><th>Location</th><th>Cases</th></tr>
       { m.map((item, i) => {
           console.log(item.state);
@@ -50,8 +61,9 @@ class App extends React.Component {
 
 
 
-</table>
+</Table>
     </div>;
+    </div>
   }
 
 }
